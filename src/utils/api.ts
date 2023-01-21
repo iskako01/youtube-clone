@@ -10,8 +10,29 @@ const options = {
   },
 };
 
-export const fetchApi = async (url: string) => {
-  const { data } = await axios.get(`${BASE_URL}/${url}`, options);
+export const fetchApiSearch = async (url: string) => {
+  const { data } = await axios.get(
+    `${BASE_URL}/search?part=snippet&q=${url}`,
+    options
+  );
 
   return data.items;
+};
+
+export const fetchApiSearchVideo = async (id: string) => {
+  const { data } = await axios.get(
+    `${BASE_URL}/search?part=snippet&relatedToVideoId=${id}&type=video`,
+    options
+  );
+
+  return data.items;
+};
+
+export const fetchApiVideoDetail = async (id: string) => {
+  const { data } = await axios.get(
+    `${BASE_URL}/videos?part=snippet,statistics&id=${id}`,
+    options
+  );
+
+  return data.items[0];
 };

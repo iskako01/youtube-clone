@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Box, Typography, Stack } from "@mui/material";
 import Sidebar from "../components/Sidebar";
 import VideosContainer from "../components/containers/VideosContainer";
@@ -13,7 +13,7 @@ const Feed = () => {
         sx={{
           height: { sx: "auto", md: "92vh" },
           borderRight: "1px solid #3d3d3d",
-          px: { sx: "0", md: "2" },
+          px: { sx: 0, md: 2 },
         }}
       >
         <Sidebar
@@ -29,24 +29,22 @@ const Feed = () => {
         </Typography>
       </Box>
 
-      <Box
-        p={1}
-        sx={{
-          height: "90vh",
-          overflow: "auto",
-          flex: 2,
-        }}
-      >
-        <Typography variant="h4" sx={{ color: "#ffffff" }}>
-          <span>{selectedCategory}</span>
+      <Box p={2} sx={{ overflowY: "auto", height: "90vh", flex: 2 }}>
+        <Typography
+          variant="h4"
+          fontWeight="bold"
+          mb={2}
+          sx={{ color: "#ffffff" }}
+        >
+          {selectedCategory}
           <span style={{ color: "#FC1503" }}> videos</span>
         </Typography>
-      </Box>
 
-      <VideosContainer
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-      />
+        <VideosContainer
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
+      </Box>
     </Stack>
   );
 };

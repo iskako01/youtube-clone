@@ -17,23 +17,27 @@ const VideoCard: FC<PropsInterface> = ({ video }) => {
         borderRadius: 0,
       }}
     >
-      <CardMedia
-        component="img"
-        alt={video.snippet.channelTitle}
-        height={video.snippet.thumbnails.high.height}
-        image={video.snippet.thumbnails.high.url}
-        sx={{ width: { xs: "100%", sm: "358px" }, height: 180 }}
-      />
+      <Link to={`/video/${video.id.videoId}`}>
+        <CardMedia
+          component="img"
+          alt={video.snippet.channelTitle}
+          height={video.snippet.thumbnails.high.height}
+          image={video.snippet.thumbnails.high.url}
+          sx={{ width: { xs: "100%", sm: "358px" }, height: 180 }}
+        />
+      </Link>
       <CardContent sx={{ backgroundColor: "#1E1E1E", height: "106px" }}>
         <Typography variant="subtitle1" fontWeight="bold" color="#FFF">
           {video.snippet.title.slice(0, 60)}
         </Typography>
-        <Typography variant="subtitle2" color="gray">
-          {video.snippet.channelTitle}
-          <CheckCircleIcon
-            sx={{ fontSize: "12px", color: "gray", ml: "5px" }}
-          />
-        </Typography>
+        <Link to={`/channel/${video.snippet.channelId}`}>
+          <Typography variant="subtitle2" color="gray">
+            {video.snippet.channelTitle}
+            <CheckCircleIcon
+              sx={{ fontSize: "12px", color: "gray", ml: "5px" }}
+            />
+          </Typography>
+        </Link>
       </CardContent>
     </Card>
   );

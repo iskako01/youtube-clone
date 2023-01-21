@@ -1,8 +1,6 @@
 import { FC, useEffect, useState } from "react";
-import { fetchApi } from "../../utils/api";
-import VideoCard from "../VideoCard";
+import { fetchApiSearch } from "../../utils/api";
 import { VideoResponseInterface } from "../../interfaces/VideoResponseInterface";
-import { Box, Stack } from "@mui/material";
 import Videos from "../Videos";
 
 interface PropsInterface {
@@ -17,7 +15,7 @@ const VideosContainer: FC<PropsInterface> = ({
   const [videoItems, setVideoItems] = useState<VideoResponseInterface[]>([]);
 
   const featchVideos = async () => {
-    const items = await fetchApi(`search?part=snippet&q=${selectedCategory}`);
+    const items = await fetchApiSearch(selectedCategory);
 
     setVideoItems(items);
   };

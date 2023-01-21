@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 
 import { Box, Stack } from "@mui/material";
 import { VideoResponseInterface } from "../interfaces/VideoResponseInterface";
@@ -11,9 +11,9 @@ interface PropsInterface {
 const Videos: FC<PropsInterface> = ({ videoItems }) => {
   return (
     <Stack
-      direction={"row"}
+      direction="row"
       flexWrap="wrap"
-      justifyContent="start"
+      justifyContent="center"
       alignItems="start"
       gap={2}
     >
