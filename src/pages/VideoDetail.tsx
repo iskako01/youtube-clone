@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchApiSearchVideo, fetchApiVideoDetail } from "../utils/api";
-import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
-import ReactPlayer from "react-player";
-import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import Videos from "../components/Videos";
-import { VideoResponseInterface } from "../interfaces/Api/Response/VideoResponseInterface";
+import { Box, Typography, Stack } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import ReactPlayer from "react-player";
+import { fetchApiSearchVideo, fetchApiVideoDetail } from "../utils/api";
+import { VideoResponseInterface } from "../interfaces/Api/Response/VideoResponseInterface";
+import { VideoDetailResponseInterface } from "../interfaces/Api/Response/VideoDetailResponseInterface";
+import Videos from "../components/Videos";
 
 const VideoDetail = () => {
   const { id } = useParams();
   const [videoItems, setvideoItems] = useState<VideoResponseInterface[]>([]);
-  const [videoDetail, setVideoDetail] = useState();
+  const [videoDetail, setVideoDetail] =
+    useState<VideoDetailResponseInterface>();
 
   const fetchVideoDetail = async () => {
     if (id) {
@@ -42,7 +42,7 @@ const VideoDetail = () => {
               controls
             />
             <Typography color="#fff" variant="h5" fontWeight="bold" p={2}>
-              {/* {videoDetail.snippet.title} */}
+              {videoDetail?.snippet.title}
             </Typography>
             <Stack
               direction="row"
@@ -51,12 +51,9 @@ const VideoDetail = () => {
               py={1}
               px={2}
             >
-              {/* <Link to={`/channel/${videoDetail.channelId}`}>
-                <Typography
-                  variant={{ sm: "subtitle1", md: "h6" }}
-                  color="#fff"
-                >
-                  {videoDetail.snippet.channelTitle}
+              <Link to={`/channel/${videoDetail?.snippet.channelId}`}>
+                <Typography variant="h6" color="#fff">
+                  {videoDetail?.snippet.channelTitle}
                   <CheckCircleIcon
                     sx={{ fontSize: "12px", color: "gray", ml: "5px" }}
                   />
@@ -64,12 +61,18 @@ const VideoDetail = () => {
               </Link>
               <Stack direction="row" gap="20px" alignItems="center">
                 <Typography variant="body1" sx={{ opacity: 0.7 }}>
-                  {parseInt(viewCount).toLocaleString()} views
+                  {parseInt(
+                    videoDetail?.statistics.viewCount!
+                  ).toLocaleString()}{" "}
+                  views
                 </Typography>
                 <Typography variant="body1" sx={{ opacity: 0.7 }}>
-                  {parseInt(likeCount).toLocaleString()} likes
+                  {parseInt(
+                    videoDetail?.statistics.likeCount!
+                  ).toLocaleString()}{" "}
+                  likes
                 </Typography>
-              </Stack> */}
+              </Stack>
             </Stack>
           </Box>
         </Box>

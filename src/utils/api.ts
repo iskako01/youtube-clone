@@ -16,8 +16,6 @@ export const fetchApiSearch = async (url: string) => {
     options
   );
 
-  console.log("fetchApiSearch", data);
-
   return data.items;
 };
 
@@ -27,7 +25,6 @@ export const fetchApiSearchVideo = async (id: string) => {
     options
   );
 
-  console.log("fetchApiSearchVideo", data);
   return data.items;
 };
 
@@ -36,7 +33,7 @@ export const fetchApiVideoDetail = async (id: string) => {
     `${BASE_URL}/videos?part=snippet,statistics&id=${id}`,
     options
   );
-  console.log("fetchApiVideoDetail", data);
+
   return data.items[0];
 };
 
@@ -45,6 +42,15 @@ export const fetchApiChannelDetail = async (id: string) => {
     `${BASE_URL}/channels?part=snippet,statistics&id=${id}`,
     options
   );
-  console.log("fetchApiVideoDetail", data);
+
   return data.items[0];
+};
+
+export const fetchApiVideoByChannelId = async (id: string) => {
+  const { data } = await axios.get(
+    `${BASE_URL}/search?channelId=${id}&part=snippet%2Cid&order=date`,
+    options
+  );
+
+  return data.items;
 };
