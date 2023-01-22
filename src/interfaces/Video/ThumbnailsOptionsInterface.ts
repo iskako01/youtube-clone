@@ -1,6 +1,6 @@
 import { ThumbnailsInterface } from "./ThumbnailsInterface";
 
-export interface SnippetThumbnailsInterface {
+export interface ThumbnailsOptionsInterface {
   default: ThumbnailsInterface;
   high: ThumbnailsInterface;
   medium: ThumbnailsInterface;

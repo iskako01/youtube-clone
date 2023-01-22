@@ -1,4 +1,4 @@
-import { SnippetThumbnailsInterface } from "./SnippetThumbnailsInterface";
+import { ThumbnailsOptionsInterface } from "./ThumbnailsOptionsInterface";
 
 export interface VideoSnippetInterface {
   channelId: string;
@@ -7,6 +7,6 @@ export interface VideoSnippetInterface {
   liveBroadcastContent: string;
   publishTime: string;
   publishedAt: string;
-  thumbnails: SnippetThumbnailsInterface;
+  thumbnails: ThumbnailsOptionsInterface;
   title: string;
 }

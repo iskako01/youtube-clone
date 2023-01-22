@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { fetchApiSearch } from "../../utils/api";
-import { VideoResponseInterface } from "../../interfaces/VideoResponseInterface";
+import { VideoResponseInterface } from "../../interfaces/Api/Response/VideoResponseInterface";
 import Videos from "../Videos";
 
 interface PropsInterface {
@@ -25,7 +25,7 @@ const VideosContainer: FC<PropsInterface> = ({
   }, [selectedCategory]);
   console.log(videoItems);
 
-  return <Videos videoItems={videoItems} />;
+  return <Videos videoItems={videoItems} direction="row" />;
 };
 
 export default VideosContainer;

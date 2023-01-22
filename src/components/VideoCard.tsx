@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 import { Typography, Card, CardContent, CardMedia } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import { VideoResponseInterface } from "../interfaces/VideoResponseInterface";
+import { VideoResponseInterface } from "../interfaces/Api/Response/VideoResponseInterface";
 
 interface PropsInterface {
   video: VideoResponseInterface;

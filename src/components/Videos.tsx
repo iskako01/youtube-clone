@@ -1,17 +1,18 @@
 import { FC } from "react";
-
 import { Box, Stack } from "@mui/material";
-import { VideoResponseInterface } from "../interfaces/VideoResponseInterface";
+import { VideoResponseInterface } from "../interfaces/Api/Response/VideoResponseInterface";
 import VideoCard from "./VideoCard";
+import ChannelCard from "./ChannelCard";
 
 interface PropsInterface {
   videoItems: VideoResponseInterface[];
+  direction: string;
 }
 
-const Videos: FC<PropsInterface> = ({ videoItems }) => {
+const Videos: FC<PropsInterface> = ({ videoItems, direction }) => {
   return (
     <Stack
-      direction="row"
+      direction={direction === "column" ? "column" : "row"}
       flexWrap="wrap"
       justifyContent="center"
       alignItems="start"
@@ -20,6 +21,7 @@ const Videos: FC<PropsInterface> = ({ videoItems }) => {
       {videoItems.map((video, index) => (
         <Box key={index}>
           <VideoCard video={video} />
+          <ChannelCard channelDetail={video} />
         </Box>
       ))}
     </Stack>
